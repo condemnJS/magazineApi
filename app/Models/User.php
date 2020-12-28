@@ -54,4 +54,12 @@ class User extends Authenticatable
         $this->save();
         return $this->api_token;
     }
+    public static function generateNumber(){
+        $tel = '';
+        for($i = 0; $i < 11; $i++){
+            $num = mt_rand(0,9);
+            $tel .= $num;
+        }
+        return $tel;
+    }
 }
