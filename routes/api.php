@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +18,4 @@ use App\Http\Controllers\OrdersController;
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/orders', [OrdersController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
