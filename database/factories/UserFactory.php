@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'fio' => $this->faker->name,
             'email' => $this->faker->email,
             'password' => Hash::make('123123'),
-            'tel' => User::generateNumber(),
+            'tel' => $this->faker->phoneNumber,
             'role_id' => rand(1,3),
         ];
     }

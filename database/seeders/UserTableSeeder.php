@@ -15,16 +15,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-//        $users = [
-//            [
-//                'fio' => 'Гизатулин Султан Камильевич',
-//                'email' => 'gizat.sultan@mail.ru',
-//                'password' => Hash::make('123123'),
-//                'tel' => '88005553535',
-//                'role_id' => 1
-//            ]
-//        ];
-//        DB::table('users')->insert($users);
         User::factory(10)->create();
     }
 }
