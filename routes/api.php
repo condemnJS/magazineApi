@@ -19,3 +19,6 @@ Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
+
+Route::get('/categoryall', [CategoryController::class, 'limitOrAll']);
+Route::get('/categoryall?limit={count}', [CategoryController::class, 'limitOrAll']);

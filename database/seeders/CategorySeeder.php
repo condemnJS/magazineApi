@@ -16,27 +16,35 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
+                'slug' => 'pokupki',
                 'title' => 'Покупки'
             ],
             [
+                'slug' => 'elektronika',
                 'title' => 'Электроника'
             ],
             [
+                'slug' => 'kompyuternaya-tehnika',
                 'title' => 'Компьютерная техника'
             ],
             [
+                'slug' => 'bytovaya-tehnika',
                 'title' => 'Бытовая техника'
             ],
             [
+                'slug' => 'detyam',
                 'title' => 'Детям'
             ],
             [
+                'slug' => 'tovary-dlya-doma',
                 'title' => 'Товары для дома'
             ],
             [
+                'slug' => 'produkty',
                 'title' => 'Продукты'
             ],
             [
+                'slug' => 'krasota',
                 'title' => 'Красота'
             ],
         ];
