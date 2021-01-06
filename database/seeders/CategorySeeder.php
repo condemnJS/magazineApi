@@ -17,35 +17,43 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'slug' => 'pokupki',
-                'title' => 'Покупки'
+                'title' => 'Покупки',
+                'icon' => 'purchases.svg'
             ],
             [
                 'slug' => 'elektronika',
-                'title' => 'Электроника'
+                'title' => 'Электроника',
+                'icon' => 'electro.svg'
             ],
             [
                 'slug' => 'kompyuternaya-tehnika',
-                'title' => 'Компьютерная техника'
+                'title' => 'Компьютерная техника',
+                'icon' => 'computer.svg'
             ],
             [
                 'slug' => 'bytovaya-tehnika',
-                'title' => 'Бытовая техника'
+                'title' => 'Бытовая техника',
+                'icon' => 'household.svg'
             ],
             [
                 'slug' => 'detyam',
-                'title' => 'Детям'
+                'title' => 'Детям',
+                'icon' => 'children.svg'
             ],
             [
                 'slug' => 'tovary-dlya-doma',
-                'title' => 'Товары для дома'
+                'title' => 'Товары для дома',
+                'icon' => 'ordersForHome.svg'
             ],
             [
                 'slug' => 'produkty',
-                'title' => 'Продукты'
+                'title' => 'Продукты',
+                'icon' => 'products.svg'
             ],
             [
                 'slug' => 'krasota',
-                'title' => 'Красота'
+                'title' => 'Красота',
+                'icon' => 'beauty.webp'
             ],
         ];
         DB::table('categories')->insert($categories);
