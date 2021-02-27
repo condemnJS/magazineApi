@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->string('icon')->nullable();
+            $table->string('image')->default('noTovar.png');
         });
     }
 

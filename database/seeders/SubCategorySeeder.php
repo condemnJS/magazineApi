@@ -16,28 +16,39 @@ class SubCategorySeeder extends Seeder
     {
         $subCategories = [
             [
-                'title' => 'Электроника',
-                'category_id' => 1
+                'title' => 'Смартфоны и аксессуры',
+                'category_id' => 1,
+                'slug' => 'smartfony-i-aksessury'
             ],
             [
-                'title' => 'Детский товары',
-                'category_id' => 1
+                'title' => 'Смарт-часы и браслеты',
+                'category_id' => 1,
+                'slug' => 'smart-chasy-i-braslety'
             ],
             [
-                'title' => 'Компьютерная техника',
-                'category_id' => 1
+                'title' => 'Гейминг',
+                'category_id' => 1,
+                'slug' => 'gejming'
             ],
             [
-                'title' => 'Товары для дома',
-                'category_id' => 1
+                'title' => 'Умный дом',
+                'category_id' => 1,
+                'slug' => 'umnyj-dom'
             ],
             [
-                'title' => 'Бытовая техника',
-                'category_id' => 1
+                'title' => 'Планшеты и электронные книги',
+                'category_id' => 1,
+                'slug' => 'planshety-i-elektronnye-knigi'
             ],
             [
-                'title' => 'Продукты',
-                'category_id' => 1
+                'title' => 'Портативная и носимая электроника',
+                'category_id' => 1,
+                'slug' => 'portativnaya-i-nosimaya-elektronika'
+            ],
+            [
+                'title' => 'Запасные части для мобильных телефонов',
+                'category_id' => 1,
+                'slug' => 'zapasnye-chasti-dlya-mobilьnyh-telefonov'
             ],
         ];
         DB::table('subcategories')->insert($subCategories);

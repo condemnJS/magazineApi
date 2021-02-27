@@ -18,7 +18,8 @@ class SubResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'subsubcategory' => SubsubResource::collection($this->subsubcategory)
+            'slug' => $this->slug,
+            'subsubcategory' => SubsubResource::collection($this->subsubcategory),
         ];
     }
 }

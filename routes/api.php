@@ -21,4 +21,6 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories?limit={count}', [CategoryController::class, 'index']);
 
+Route::get('/subcategories', [CategoryController::class, 'sub']);
+
 Route::get('/categories/{slug}', [CategoryController::class, 'getCategory']);

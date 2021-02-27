@@ -17,24 +17,34 @@ class SubsubCategorySeeder extends Seeder
         $subsubcategories = [
             [
                 'title' => 'Смартфоны и аксессуары',
-                'subcategory_id' => 1
+                'subcategory_id' => 1,
+                'slug' => 'smartfony-i-aksessuary'
             ],
             [
                 'title' => 'Планшеты и электронные книги',
-                'subcategory_id' => 1
+                'subcategory_id' => 1,
+                'slug' => 'planshety-i-elektronnye-knigi'
             ],
             [
                 'title' => 'Наушники и Bluetooth-гарнитура',
-                'subcategory_id' => 1
+                'subcategory_id' => 1,
+                'slug' => 'naushniki-i-bluetooth-garnitura'
             ],
             [
                 'title' => 'Смарт-часы и браслеты',
-                'subcategory_id' => 1
+                'subcategory_id' => 1,
+                'slug' => 'smart-chasy-i-braslety'
             ],
             [
                 'title' => 'Телевизоры и аксессуары',
-                'subcategory_id' => 1
+                'subcategory_id' => 1,
+                'slug' => 'televizory-i-aksessuary'
             ],
+            [
+                'title' => 'Конструкторы',
+                'subcategory_id' => 2,
+                'slug' => 'konstruktory'
+            ]
         ];
         DB::table('subsubcategories')->insert($subsubcategories);
     }
