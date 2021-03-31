@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    protected $casts = [
+        'images' => 'array'
+    ];
+
+    public function reviews() {
+        return $this->hasMany('App\Models\Review');
+    }
+    public function specifications() {
+        return $this->hasMany('App\Models\Specification');
+    }
 }

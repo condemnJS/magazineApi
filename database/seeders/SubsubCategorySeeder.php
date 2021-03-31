@@ -16,34 +16,49 @@ class SubsubCategorySeeder extends Seeder
     {
         $subsubcategories = [
             [
-                'title' => 'Смартфоны и аксессуары',
+                'title' => 'Смартфоны',
                 'subcategory_id' => 1,
-                'slug' => 'smartfony-i-aksessuary'
+                'slug' => 'smartfony'
             ],
             [
-                'title' => 'Планшеты и электронные книги',
+                'title' => 'Кнопочные телефоны',
                 'subcategory_id' => 1,
-                'slug' => 'planshety-i-elektronnye-knigi'
+                'slug' => 'knopochnye-telefony'
             ],
             [
-                'title' => 'Наушники и Bluetooth-гарнитура',
+                'title' => 'Аксессуары',
                 'subcategory_id' => 1,
-                'slug' => 'naushniki-i-bluetooth-garnitura'
+                'slug' => 'aksessuary'
             ],
             [
-                'title' => 'Смарт-часы и браслеты',
+                'title' => 'Рации и прочие телефоны',
                 'subcategory_id' => 1,
-                'slug' => 'smart-chasy-i-braslety'
+                'slug' => 'racii-i-prochie-telefony'
             ],
             [
-                'title' => 'Телевизоры и аксессуары',
+                'title' => 'Тарифные планы и номера',
                 'subcategory_id' => 1,
-                'slug' => 'televizory-i-aksessuary'
+                'slug' => 'tarifnye-plany-i-nomera'
             ],
             [
-                'title' => 'Конструкторы',
+                'title' => 'Мобильные телефоны',
                 'subcategory_id' => 2,
-                'slug' => 'konstruktory'
+                'slug' => 'mobilnye-telefony'
+            ],
+            [
+                'title' => 'Игровые приставки',
+                'subcategory_id' => 3,
+                'slug' => 'igrovye-pristavki'
+            ],
+            [
+                'title' => 'Бытовая техника',
+                'subcategory_id' => 4,
+                'slug' => 'umnaya-bytovaya-tehnika'
+            ],
+            [
+                'title' => 'Планшеты',
+                'subcategory_id' => 5,
+                'slug' => 'planshety'
             ]
         ];
         DB::table('subsubcategories')->insert($subsubcategories);

@@ -39,28 +39,30 @@ class CategoryController extends Controller
             $subsubcategory = Subsubcategory::query()
                 ->where('slug', $slug)
                 ->first();
-            if($category) {
+            if ($category) {
                 return response()->json([
+                    'id' => $category->id,
                     'title' => $category->title,
                     'slug' => $category->slug,
                     'subCategories' => SubResource::collection($category->subcategory)
                 ]);
             }
-            if($subcategory) {
+            if ($subcategory) {
                 return response()->json([
+                    'id' => $subcategory->id,
                     'title' => $subcategory->title,
                     'slug' => $subcategory->slug,
-                    'subsubCategories' => SubsubResource::collection($subcategory->subsubcategory)
+                    'subsubcategory' => SubsubResource::collection($subcategory->subsubcategory)
                 ]);
             }
-            if($subsubcategory) {
+            if ($subsubcategory) {
                 return response()->json([
                     'id' => $subsubcategory->id,
                     'title' => $subsubcategory->title,
                     'slug' => $subsubcategory->slug
                 ]);
             }
-            if(!$category || !$subcategory) {
+            if (!$category || !$subcategory) {
                 throw new NotFoundHttpException();
             }
 
@@ -82,6 +84,14 @@ class CategoryController extends Controller
                 'subcategories' => SubResource::collection($item->subcategory)
             ];
         });
+    }
+
+    public function getFirstAbleCategories(Request $request, string $slug)
+    {
+        $category = Category::query()
+            ->where('slug', $slug)
+            ->first();
+        dd($category);
     }
 
 }
