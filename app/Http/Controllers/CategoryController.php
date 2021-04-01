@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\SubCategoryRequest;
+use App\Http\Requests\SubSubCategoryRequest;
 use App\Http\Resources\SubsubResource;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -12,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Models\Subsubcategory;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class CategoryController extends Controller
 {
@@ -93,5 +98,35 @@ class CategoryController extends Controller
             ->first();
         dd($category);
     }
+
+    public function createCategory(CategoryRequest $request) {
+        $image = Storage::disk('public')->put('categories', $request->image);
+        Category::create([
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'image' => URL::to('/storage').'/'.$image
+        ]);
+        return response()->json([
+            'code' => 201,
+            'message' => 'Категория успешно создана'
+        ], 201);
+    }
+
+    public function createSubCategory(SubCategoryRequest $request) {
+        Subcategory::create($request->all());
+        return response()->json([
+            'code' => 201,
+            'message' => 'Подкатегория успешно создана'
+        ], 201);
+    }
+
+    public function createSubSubCategory(SubSubCategoryRequest $request) {
+        Subsubcategory::create($request->all());
+        return response()->json([
+            'code' => 201,
+            'message' => 'Подподкатегория успешно создана'
+        ], 201);
+    }
+
 
 }

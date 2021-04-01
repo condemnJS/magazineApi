@@ -40,4 +40,6 @@ Route::prefix('order')->group(function ($item) {
 
 Route::prefix('admin')->middleware('auth:api')->group(function ($item) {
     Route::post('/category/create', [CategoryController::class, 'createCategory']);
+    Route::post('/subcategory/create', [CategoryController::class, 'createSubCategory']);
+    Route::post('/subsubcategory/create', [CategoryController::class, 'createSubSubCategory']);
 });

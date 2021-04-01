@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Subcategory extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public $timestamps = [];
 
     public function subsubcategory(){
         return $this->hasMany('App\Models\Subsubcategory');
