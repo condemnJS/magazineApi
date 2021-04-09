@@ -39,4 +39,9 @@ class UserController extends Controller
             'message' => 'Неверный email или пароль'
         ], 403));
     }
+
+    public function getUser(Request $request, $token) {
+        $user = User::where('api_token', $token)->first();
+        return response()->json(['user' => $user], 200);
+    }
 }

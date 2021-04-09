@@ -75,7 +75,7 @@ class CategoryController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Not Found Category'
-            ]);
+            ], 404);
         }
     }
 

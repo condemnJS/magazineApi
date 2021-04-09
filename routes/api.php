@@ -22,6 +22,8 @@ use App\Http\Controllers\SpecificationController;
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 
+Route::get('/user/{token}', [UserController::class, 'getUser']);
+
 Route::get('/subcategories', [CategoryController::class, 'sub']);
 
 Route::prefix('categories')->group(function ($item) {
