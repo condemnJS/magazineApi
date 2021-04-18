@@ -16,8 +16,8 @@ class SubCategoryRequest extends ApiRequest
     {
         return [
             'title' => 'required|string',
-            'slug' => 'required|string',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'image' => 'required|image|file'
         ];
     }
 }

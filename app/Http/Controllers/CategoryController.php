@@ -17,6 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Models\Subsubcategory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -91,6 +92,11 @@ class CategoryController extends Controller
         });
     }
 
+    public function subcategories() 
+    {
+        return response()->json(['data' => Subcategory::all()]);
+    }
+
     public function getFirstAbleCategories(Request $request, string $slug)
     {
         $category = Category::query()
@@ -100,10 +106,11 @@ class CategoryController extends Controller
     }
 
     public function createCategory(CategoryRequest $request) {
+        $slug = Str::slug($request->title, '-');
         $image = Storage::disk('public')->put('categories', $request->image);
         Category::create([
             'title' => $request->title,
-            'slug' => $request->slug,
+            'slug' => $slug,
             'image' => URL::to('/storage').'/'.$image
         ]);
         return response()->json([
@@ -113,7 +120,14 @@ class CategoryController extends Controller
     }
 
     public function createSubCategory(SubCategoryRequest $request) {
-        Subcategory::create($request->all());
+        $slug = Str::slug($request->title, '-');
+        $image = Storage::disk('public')->put('subcategories', $request->image);
+        Subcategory::create([
+            'title' => $request->title,
+            'slug' => $slug,
+            'category_id' => $request->category_id,
+            'image' => URL::to('/storage').'/'.$image
+        ]);
         return response()->json([
             'code' => 201,
             'message' => 'Подкатегория успешно создана'
@@ -121,7 +135,15 @@ class CategoryController extends Controller
     }
 
     public function createSubSubCategory(SubSubCategoryRequest $request) {
-        Subsubcategory::create($request->all());
+        $slug = Str::slug($request->title, '-');
+        $image = Storage::disk('public')->put('subsubcategories', $request->image);
+        Subsubcategory::create([
+            'title' => $request->title,
+            'slug' => $slug,
+            'subcategory_id' => $request->subcategory_id,
+            'image' => URL::to('/storage').'/'.$image
+        ]);
+
         return response()->json([
             'code' => 201,
             'message' => 'Подподкатегория успешно создана'

@@ -16,7 +16,6 @@ class CategoryRequest extends ApiRequest
     {
         return [
             'title' => 'required|string',
-            'slug' => 'required|string',
             'image' => 'required|image|file'
         ];
     }

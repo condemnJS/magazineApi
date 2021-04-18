@@ -17,6 +17,7 @@ class CreateSubsubcategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->string('image')->default('noTovar.png');
             $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
         });
     }

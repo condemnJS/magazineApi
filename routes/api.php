@@ -23,16 +23,19 @@ Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/user/{token}', [UserController::class, 'getUser']);
+Route::get('/user/{token}/role', [UserController::class, 'getUserRole']);
 
-Route::get('/subcategories', [CategoryController::class, 'sub']);
 
 Route::prefix('categories')->group(function ($item) {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/?limit={count}', [CategoryController::class, 'index']);
+    Route::get('/childrens', [CategoryController::class, 'sub']);
 
     Route::get('/{slug}', [CategoryController::class, 'getCategory']);
     Route::get('/{slug}/subsubcategories', [CategoryController::class, 'getFirstAbleCategories']);
 });
+
+Route::get('/subcategories', [CategoryController::class, 'subcategories']);
 
 Route::prefix('order')->group(function ($item) {
     Route::get('/{orderId}', [OrderController::class, 'getOrder']);

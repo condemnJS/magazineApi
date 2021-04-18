@@ -62,4 +62,7 @@ class User extends Authenticatable
         }
         return $tel;
     }
+    public function role() {
+        return $this->belongsTo('App\Models\Role');
+    }
 }
