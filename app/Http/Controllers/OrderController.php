@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class OrderController extends Controller
 {
@@ -14,6 +16,26 @@ class OrderController extends Controller
     }
 
     public function createOrder(OrderRequest $request) {
-        Order::create($request->all());
+        // dd($request->files('images')->getClientOriginalName());
+        $jsonImages = [];
+        foreach($request->file('images') as $image) {
+            $jsonImages[] = URL::to('/storage') .'/'. Storage::disk('public')->put('orders', $image);
+        }
+        Order::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'images' => json_encode($jsonImages),
+            'subsubcategory_id' => $request->subsubcategory_id
+        ]);
+        return response()->json([
+            'code' => 201,
+            'message' => 'Товар успешно создан'
+        ], 201);
+    }
+
+    public function getAllOrders() {
+        $orders = Order::all();
+        dd(json_decode($orders[3]->images));
     }
 }

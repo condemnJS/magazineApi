@@ -13,7 +13,7 @@ class Order extends Model
     protected $casts = [
         'images' => 'array'
     ];
-
+    protected $guarded = [];
     public function reviews() {
         return $this->hasMany('App\Models\Review');
     }

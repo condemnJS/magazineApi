@@ -17,7 +17,7 @@ class SubCategoryRequest extends ApiRequest
         return [
             'title' => 'required|string',
             'category_id' => 'required',
-            'image' => 'required|image|file'
+            'image' => 'required|file|mimes:png'
         ];
     }
 }

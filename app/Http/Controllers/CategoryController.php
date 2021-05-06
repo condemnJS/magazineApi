@@ -18,6 +18,7 @@ use App\Models\Subsubcategory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class CategoryController extends Controller
 {
@@ -97,6 +98,11 @@ class CategoryController extends Controller
         return response()->json(['data' => Subcategory::all()]);
     }
 
+    public function subsubcategories()
+    {
+        return response()->json(['data' => Subsubcategory::all()]);
+    }
+
     public function getFirstAbleCategories(Request $request, string $slug)
     {
         $category = Category::query()
@@ -150,5 +156,22 @@ class CategoryController extends Controller
         ], 201);
     }
 
+    public function getSubCategoriesBySlug(Request $request, $slug) 
+    {
+        try {
+            $category = Category::query()
+            ->where('slug', $slug)
+            ->first();
+            if (!$category) throw new NotFoundHttpException("Категория не найдена");
+            return response()->json([
+                'data' => $category->subcategory
+            ]);
+        } catch (NotFoundHttpException $e) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Not Found Category'
+            ], 404);
+        }
+    }
 
 }

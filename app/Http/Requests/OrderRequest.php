@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderRequest extends FormRequest
+class OrderRequest extends ApiRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,7 +17,9 @@ class OrderRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'images' => 'required'
+            'images' => 'array|required',
+            'images.*' => 'required|image|file',
+            'subsubcategory_id' => 'required'
         ];
     }
 }

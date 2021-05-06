@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable()->default(null);
-            $table->integer('price');
+            $table->string('price');
             $table->json('images');
 
             $table->foreignId('subsubcategory_id')->constrained('subsubcategories')->onDelete('cascade');

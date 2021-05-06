@@ -25,6 +25,8 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/user/{token}', [UserController::class, 'getUser']);
 Route::get('/user/{token}/role', [UserController::class, 'getUserRole']);
 
+Route::get('/subcategories', [CategoryController::class, 'subcategories']);
+Route::get('/subsubcategories', [CategoryController::class, 'subsubcategories']);
 
 Route::prefix('categories')->group(function ($item) {
     Route::get('/', [CategoryController::class, 'index']);
@@ -33,14 +35,16 @@ Route::prefix('categories')->group(function ($item) {
 
     Route::get('/{slug}', [CategoryController::class, 'getCategory']);
     Route::get('/{slug}/subsubcategories', [CategoryController::class, 'getFirstAbleCategories']);
+    Route::get('/{slug}/subcategories', [CategoryController::class, 'getSubCategoriesBySlug']);
 });
 
-Route::get('/subcategories', [CategoryController::class, 'subcategories']);
-
 Route::prefix('order')->group(function ($item) {
+    Route::get('/all', [OrderController::class, 'getAllOrders']);
     Route::get('/{orderId}', [OrderController::class, 'getOrder']);
     Route::get('/{orderId}/reviews', [ReviewController::class, 'getReviews']);
     Route::get('/{orderId}/specifications', [SpecificationController::class, 'getSpecifications']);
+
+    Route::post('/create', [OrderController::class, 'createOrder']);
 });
 
 Route::prefix('admin')->middleware('auth:api')->group(function ($item) {

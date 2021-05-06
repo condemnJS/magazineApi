@@ -24,7 +24,7 @@ class ApiRequest extends FormRequest
             'email' => 'Неверный формат почты',
             'unique' => 'Такой пользователь уже существует',
             'confirmed' => 'Пароли не совпадают',
-            'size' => ':attribute должен состоять из :size символов'
+            'size' => ':attribute должен состоять из :size символов',
         ];
     }
 }

@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleTableSeeder::class,
-            UserTableSeeder::class,
-            CategorySeeder::class,
-            SubCategorySeeder::class,
-            SubsubCategorySeeder::class,
-            OrderSeeder::class,
-            ReviewSeeder::class
+            // UserTableSeeder::class,
+            // CategorySeeder::class,
+            // SubCategorySeeder::class,
+            // SubsubCategorySeeder::class,
+            // OrderSeeder::class,
+            // ReviewSeeder::class
         ]);
     }
 }
