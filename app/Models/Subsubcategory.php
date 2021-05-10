@@ -10,4 +10,8 @@ class Subsubcategory extends Model
     use HasFactory;
     protected $guarded = [];
     public $timestamps = false;
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

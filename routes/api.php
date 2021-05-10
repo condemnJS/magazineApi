@@ -39,6 +39,9 @@ Route::prefix('categories')->group(function ($item) {
 });
 
 Route::prefix('order')->group(function ($item) {
+    Route::get('/{slug}', [OrderController::class, 'getOrderWithSlug']);
+
+
     Route::get('/all', [OrderController::class, 'getAllOrders']);
     Route::get('/{orderId}', [OrderController::class, 'getOrder']);
     Route::get('/{orderId}/reviews', [ReviewController::class, 'getReviews']);
