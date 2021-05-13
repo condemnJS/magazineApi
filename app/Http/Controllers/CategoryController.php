@@ -93,7 +93,7 @@ class CategoryController extends Controller
         });
     }
 
-    public function subcategories() 
+    public function subcategories()
     {
         return response()->json(['data' => Subcategory::all()]);
     }
@@ -156,7 +156,7 @@ class CategoryController extends Controller
         ], 201);
     }
 
-    public function getSubCategoriesBySlug(Request $request, $slug) 
+    public function getSubCategoriesBySlug(Request $request, $slug)
     {
         try {
             $category = Category::query()
@@ -174,4 +174,18 @@ class CategoryController extends Controller
         }
     }
 
+    public function deleteCategory(Request $request, Category $category) {
+        $category->delete();
+        return response()->json([], 204);
+    }
+
+    public function deleteSubCategory(Request $request, Subcategory $subcategory) {
+        $subcategory->delete();
+        return response()->json([], 204);
+    }
+
+    public function deleteSubSubCategory(Request $request, Subsubcategory $subsubcategory) {
+        $subsubcategory->delete();
+        return response()->json([], 204);
+    }
 }

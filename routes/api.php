@@ -52,6 +52,11 @@ Route::prefix('order')->group(function ($item) {
 
 Route::prefix('admin')->middleware('auth:api')->group(function ($item) {
     Route::post('/category/create', [CategoryController::class, 'createCategory']);
+    Route::delete('/category/{category}/delete', [CategoryController::class, 'deleteCategory']);
+
     Route::post('/subcategory/create', [CategoryController::class, 'createSubCategory']);
+    Route::delete('/subcategory/{subcategory}/delete', [CategoryController::class, 'deleteSubCategory']);
+
     Route::post('/subsubcategory/create', [CategoryController::class, 'createSubSubCategory']);
+    Route::delete('/subsubcategory/{category}/delete', [CategoryController::class, 'deleteSubSubCategory']);
 });

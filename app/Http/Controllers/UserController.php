@@ -47,6 +47,6 @@ class UserController extends Controller
 
     public function getUserRole(Request $request, $token) {
         $user = User::where('api_token', $token)->first();
-        return response()->json(['role' => $user->role], 200);  
+        return response()->json(['role' => $user->role], 200);
     }
 }
