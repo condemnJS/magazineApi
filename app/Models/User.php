@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -45,24 +46,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
     }
-    public function generateToken(){
+
+    public function generateToken()
+    {
         $this->api_token = Str::random(50);
         $this->save();
         return $this->api_token;
     }
-    public static function generateNumber(){
+
+    public static function generateNumber()
+    {
         $tel = '';
-        for($i = 0; $i < 11; $i++){
-            $num = mt_rand(0,9);
+        for ($i = 0; $i < 11; $i++) {
+            $num = mt_rand(0, 9);
             $tel .= $num;
         }
         return $tel;
     }
-    public function role() {
+
+    public function role()
+    {
         return $this->belongsTo('App\Models\Role');
     }
 }

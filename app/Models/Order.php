@@ -14,10 +14,14 @@ class Order extends Model
         'images' => 'array'
     ];
     protected $guarded = [];
-    public function reviews() {
+
+    public function reviews()
+    {
         return $this->hasMany('App\Models\Review');
     }
-    public function specifications() {
+
+    public function specifications()
+    {
         return $this->hasMany('App\Models\Specification');
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SpecificationController;
+use App\Http\Controllers\BasketController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,20 @@ Route::prefix('order')->group(function ($item) {
     Route::get('/{orderId}/specifications', [SpecificationController::class, 'getSpecifications']);
 
     Route::post('/create', [OrderController::class, 'createOrder']);
+});
+Route::middleware('auth:api')->group(function () {
+    Route::prefix('basket')->group(function () {
+        Route::post('/add', [BasketController::class, 'addOrderIntoBasket']);
+        Route::delete('/delete/all', [BasketController::class, 'deleteAllOrdersOfBasket']);
+        Route::delete('/delete/{id}', [BasketController::class, 'deleteOrderOfBasket']);
+        Route::get('/info', [BasketController::class, 'getBasketInfo']);
+    });
+
+    Route::prefix('favorite')->group(function () {
+        Route::post('/add', [FavoriteController::class, 'addOrderIntoFavorite']);
+        Route::delete('/delete/{id}', [FavoriteController::class, 'deleteOrderOfFavorite']);
+        Route::get('/info', [FavoriteController::class, 'getFavoriteInfo']);
+    });
 });
 
 Route::prefix('admin')->middleware('auth:api')->group(function ($item) {
